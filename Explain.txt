@@ -1,0 +1,15 @@
+This Python code is for a Streamlit application that allows users to upload multiple PDF documents and ask questions about them. The application then processes the PDFs and responds to the user's questions. Here's a brief overview of the main functions:
+
+get_pdf_text(pdf_docs): This function reads the text from the uploaded PDF documents. It uses the PdfReader class from the PyPDF2 library to read the PDFs and extract the text.
+
+get_text_chunks(text): This function splits the extracted text into chunks. It uses the CharacterTextSplitter class from the langchain.text_splitter module. The text is split into chunks of 1000 characters, with an overlap of 200 characters between chunks.
+
+get_vectorstore(text_chunks): This function creates a vector store from the text chunks. It uses the OpenAIEmbeddings class from the langchain.embeddings module to create embeddings for the text chunks, and the FAISS class from the langchain.vectorstores module to create a vector store from the embeddings.
+
+get_conversation_chain(vectorstore): This function creates a conversation chain from the vector store. It uses the ChatOpenAI class from the langchain.chat_models module and the ConversationBufferMemory class from the langchain.memory module to create a conversation chain.
+
+handle_userinput(user_question): This function handles the user's input. It uses the conversation chain to generate a response to the user's question and updates the chat history.
+
+main(): This is the main function that runs the Streamlit application. It sets up the application, handles user input, and processes the PDF documents.
+
+The application uses the dotenv library to load environment variables, and the htmlTemplates module to format the chat messages. The st.session_state object is used to store the conversation chain and chat history between user interactions.
